@@ -1,0 +1,35 @@
+{
+    "place_id": 9658714,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 38295114,
+    "lat": "-22.8442371",
+    "lon": "-43.0017070",
+    "class": "highway",
+    "type": "residential",
+    "place_rank": 26,
+    "importance": 0.05339050659952693,
+    "addresstype": "road",
+    "name": "Rua Ariquerme de Mendonça",
+    "display_name": "Rua Ariquerme de Mendonça, Almerinda, Ipiiba, São Gonçalo, Região Geográfica Imediata do Rio de Janeiro, Região Metropolitana do Rio de Janeiro, Região Geográfica Intermediária do Rio de Janeiro, Rio de Janeiro, Região Sudeste, 24744-520, Brasil",
+    "address": {
+        "road": "Rua Ariquerme de Mendonça",
+        "suburb": "Almerinda",
+        "village": "Ipiiba",
+        "municipality": "São Gonçalo",
+        "county": "Região Metropolitana do Rio de Janeiro",
+        "state_district": "Região Geográfica Intermediária do Rio de Janeiro",
+        "state": "Rio de Janeiro",
+        "ISO3166-2-lvl4": "BR-RJ",
+        "region": "Região Sudeste",
+        "postcode": "24744-520",
+        "country": "Brasil",
+        "country_code": "br"
+    },
+    "boundingbox": [
+        "-22.8443282",
+        "-22.8432814",
+        "-43.0040456",
+        "-43.0011180"
+    ]
+}

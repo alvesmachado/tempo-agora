@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Agora | Procure o clima atual de sua cidade</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div id="containerTop">
+            <div id="headerTop">
+                <a href="index.html" id="logoLink">
+                    <h1>TEMPO AGORA</h1>
+                </a>
+                <span class="material-icons">search</span>
+            </div>
+        </div>
+        <div id="containerBottom">
+            <div id="headerBottom">
+                <span class="material-icons">location_on</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="sectionSearch">
+            <span class="material-icons">location_on</span>
+            <input type="search" name="cidadeInput" id="iCidadeInput">
+            <input type="button" class="material-icons" value="search">
+        </section>
+        <!--<section id="sectionTime">
+            <h2>${cidadeResult}, ${paisResult}</h2>
+            <div id="tempDiv">
+                <img id="tempImg" alt="">
+                <p id="tempResult">${tempResult}°C</p>
+                <p id>${descResult}</p>
+            </div>
+            <div id="detailsTime">
+                <div id="tempMax">
+                    <h3>Temp. Máx.</h3>
+                    ${tempMaxResult}°C
+                </div>
+                <div id="tempMin">
+                    <h3>Temp. Mín.</h3>
+                    ${tempMinResult}°C
+                </div>
+                <div id="tempHum">
+                    <h3>Humidade</h3>
+                    ${humidityResult}%
+                </div>
+                <div id="tempAir">
+                    <h3>Vento</h3>
+                    ${windSpeedResult} km/h
+                </div>
+            </div>
+        </section>-->
+
+        <section id="sectionTime">
+            <img src="loading.png" alt="Carregando...">
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
