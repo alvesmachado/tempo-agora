@@ -1,19 +1,26 @@
-import { btnHeaderSearch, btnHeaderLocation, btnSearch } from './inputHTML.js';
-import { searchCity } from './searchCity.js';
-import { locationAtual, climaAqui } from './cidadeAtual.js';
+import { btnHeaderSearch, btnHeaderLocation, btnSearch, btnLogin } from './inputHTML.js';
 
-
-document.addEventListener("DOMContentLoaded", locationAtual)
+document.addEventListener("DOMContentLoaded", async () => {
+    const { locationAtual } = await import('./cidadeAtual.js')
+    locationAtual()
+})
 
 btnHeaderLocation.addEventListener('click', async () => {
-    const { climaAqui } = await import('./cidadeAtual.js');
+    const { climaAqui } = await import('./cidadeAtual.js')
     climaAqui()
 })
 
-
-btnSearch.addEventListener('click', searchCity)
+btnSearch.addEventListener('click', async () => {
+    const { searchCity } = await import('./searchCity.js')
+    searchCity()
+})
 
 btnHeaderSearch.addEventListener('click', async () => {
-    const { mostrarSearch } = await import('./mostrarSearch.js');
+    const { mostrarSearch } = await import('./mostrarSearch.js')
     mostrarSearch()
+})
+
+btnLogin.addEventListener('click', async () => {
+    const { createLogin } = await import('./createLogin.js')
+    createLogin()
 })
