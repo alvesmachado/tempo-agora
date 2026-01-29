@@ -1,0 +1,6 @@
+export const btnHeaderSearch = document.querySelector('#headerTop span.material-icons')
+export const btnHeaderLocation = document.querySelector('#headerBottom span.material-icons')
+export const btnSearch = document.querySelector('#sectionSearch input.material-icons')
+export const sectionSearch = document.querySelector('#sectionSearch')
+export const sectionTime = document.querySelector('#sectionTime')
+export const cityName = document.querySelector('#iCidadeInput')

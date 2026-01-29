@@ -1,51 +1,30 @@
-const btnHeaderSearch = document.querySelector('#headerTop span.material-icons')
-const btnHeaderLocation = document.querySelector('#headerBottom span.material-icons')
-const btnSearch = document.querySelector('#sectionSearch input.material-icons')
-const sectionSearch = document.querySelector('#sectionSearch')
-const sectionTime = document.querySelector('#sectionTime')
-const cityName = document.querySelector('#iCidadeInput')
-let cityAtual = ''
+import { cityName } from './inputHTML.js'
+import { sectionTime } from './inputHTML.js'
+import { loading } from './loading.js'
+import { error } from './error.js'
 
-const loading = () => {
-    sectionTime.style.background = 'rgba(255, 255, 255, 0)'
-    sectionTime.innerHTML = `<img src="loading.png" alt="Carregando...">`
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    navigator.geolocation.getCurrentPosition(async position => {
-        const lat = position.coords.latitude
-        const lon = position.coords.longitude
-        
-        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then(response => response.json()).then(data => {
-            if (data.address.municipality) {  
-                cityAtual = data.address.municipality
-                cityName.value = cityAtual
-                btnHeaderLocation.insertAdjacentHTML('beforebegin', `<span id='atualStyle'>${data.address.municipality}, ${data.address.country_code.toUpperCase()}</span>`)
-                searchCity()
-            } else if (data.address.city) {
-                alert('Cidade não encontrada. Por favor, insira o nome da cidade manualmente.')
-            }
-        })
-    })
-})
-
-btnHeaderLocation.addEventListener('click', () => {
-    cityName.value = cityAtual
-    searchCity()
-})
-const searchCity = () => {
+export const searchCity = () => {
     if (cityName.value === '') {
         return alert('Por favor, insira o nome de uma cidade.')
     } else {
         loading()
         const ApiKey = `e80e8f039b97879406ee3b75073c01b3`
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${ApiKey}&units=metric&lang=pt_br`
-        fetch(url).then(response => response.json()).then(data => {
-            if (data.cod === 404) {
+        fetch(url).then(response => {
+            if (response.status === 404) {
+                error()
                 return alert('Cidade não encontrada. Por favor, verifique o nome e tente novamente.')
-            } else if (data.cod === 400) {
+            } else if (response.status === 400) {
+                error()
                 return alert('Por favor, insira o nome de uma cidade.')
-            } else if (data.cod === 200) {
+            } else if (response.ok) {
+                return response.json()
+            }
+        })
+        .then(data => {
+            if (!data) {
+                return
+            } else {
                 const cidadeResult = data.name
                 const paisResult = data.sys.country
                 const tempResult = data.main.temp.toFixed(1).replace('.', ',')
@@ -85,15 +64,8 @@ const searchCity = () => {
                         </div>
                     </div>`
                 sectionTime.insertAdjacentHTML('beforeend', htmlResult)
-            }
+            }   
         })
     }
 
 }
-
-btnSearch.addEventListener('click', searchCity)
-
-btnHeaderSearch.addEventListener('click', () => {
-    const displaySearch = sectionSearch.style.display == 'none' || sectionSearch.style.display == ''? 'block' : 'none'
-    sectionSearch.style.display = displaySearch
-})
