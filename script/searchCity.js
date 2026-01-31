@@ -3,28 +3,29 @@ import { sectionTime } from './inputHTML.js'
 import { loading } from './loading.js'
 import { error } from './error.js'
 
-export const searchCity = () => {
+export const searchCity = async () => {
     if (cityName.value === '') {
-        return alert('Por favor, insira o nome de uma cidade.')
+        error(400)
+        return
     } else {
-        loading()
-        const ApiKey = `e80e8f039b97879406ee3b75073c01b3`
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${ApiKey}&units=metric&lang=pt_br`
-        fetch(url).then(response => {
-            if (response.status === 404) {
-                error()
-                return alert('Cidade não encontrada. Por favor, verifique o nome e tente novamente.')
-            } else if (response.status === 400) {
-                error()
-                return alert('Por favor, insira o nome de uma cidade.')
-            } else if (response.ok) {
-                return response.json()
-            }
-        })
-        .then(data => {
-            if (!data) {
-                return
-            } else {
+        try {
+            loading()
+            const ApiKey = `e80e8f039b97879406ee3b75073c01b3`
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${ApiKey}&units=metric&lang=pt_br`
+                const response = await fetch(url)
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        error(404)
+                        return
+                    } else if (response.status === 400) {
+                        error(400)
+                        return
+                    } else if (response.status === 401) {
+                        error(401)
+                        return
+                    }
+                }
+                const data = await response.json()
                 const cidadeResult = data.name
                 const paisResult = data.sys.country
                 const tempResult = data.main.temp.toFixed(1).replace('.', ',')
@@ -63,9 +64,9 @@ export const searchCity = () => {
                             <p>${windSpeed} m/s</p>
                         </div>
                     </div>`
-                sectionTime.insertAdjacentHTML('beforeend', htmlResult)
-            }   
-        })
+                sectionTime.insertAdjacentHTML('beforeend', htmlResult)                  
+        } catch {
+            error('breakLink')
+        }
     }
-
 }
