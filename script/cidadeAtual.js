@@ -9,7 +9,6 @@ export const locationAtual = () => {
         const lon = position.coords.longitude
         
         fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then(response => response.json()).then(data => {
-            console.log(data)
             if (data.address.municipality) {  
                 cityAtual = data.address.municipality
                 cityName.value = cityAtual

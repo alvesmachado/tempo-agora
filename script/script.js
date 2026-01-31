@@ -2,6 +2,8 @@ import { btnHeaderSearch, btnHeaderLocation, btnSearch, btnLogin } from './input
 
 document.addEventListener("DOMContentLoaded", async () => {
     const { locationAtual } = await import('./cidadeAtual.js')
+    const { isLogin } = await import('./isLogin.js')
+    isLogin()
     locationAtual()
 })
 
