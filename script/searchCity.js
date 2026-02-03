@@ -5,11 +5,10 @@ import { error } from './error.js'
 import { historicUpdate } from './historic.js'
 
 export const searchCity = async () => {
-    let contaLogada = localStorage.getItem('ContaTempoAgoraLogada')
-    const contas = JSON.parse(localStorage.getItem('user'))
-    const contaAtual = contas.find( userLog => userLog.nome == contaLogada)
     const time = new Date().getTime()
-    if ((contaLogada && contaLogada !== "null" && contaLogada.trim() !== "") && (contaAtual.historic[0].cidadeResult == cityName.value && (time - contaAtual.historic[0].time) < 600000)) {
+    if ((localStorage.getItem('ContaTempoAgoraLogada') && localStorage.getItem('ContaTempoAgoraLogada') !== "null" && localStorage.getItem('ContaTempoAgoraLogada').trim() !== "") && (JSON.parse(localStorage.getItem('user')).find( userLog => userLog.nome == localStorage.getItem('ContaTempoAgoraLogada')).historic[0].cidadeResult == cityName.value && (time - JSON.parse(localStorage.getItem('user')).find( userLog => userLog.nome == localStorage.getItem('ContaTempoAgoraLogada')).historic[0].time) < 600000)) {
+        const contas = JSON.parse(localStorage.getItem('user'))
+        const contaAtual = contas.find( userLog => userLog.nome == localStorage.getItem('ContaTempoAgoraLogada'))
         loading()
         sectionTime.innerHTML = ''
         sectionTime.style.background = '#ffffff21'
