@@ -1,6 +1,8 @@
 import { sectionTime } from "./inputHTML.js";
+import { loading } from "./loading.js";
 
 export const createLogin = async () => {
+    loading()
     let contaLogada = localStorage.getItem('ContaTempoAgoraLogada')
     if (contaLogada && contaLogada !== "null" && contaLogada.trim() !== "") {
         localStorage.setItem('ContaTempoAgoraLogada', null)
@@ -17,6 +19,7 @@ export const createLogin = async () => {
                 </div>
                 <input type="button" class="btnNormal" value="Entrar">
             </form>`
+    
     sectionTime.innerHTML = ''
     sectionTime.style.background = '#ffffff21'
     sectionTime.insertAdjacentHTML('beforeend', loginForm)

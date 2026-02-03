@@ -198,7 +198,7 @@ section {
     margin-bottom: 24px;
 }
 
-#tempDiv {
+.tempDiv {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -210,34 +210,34 @@ section {
     justify-self: center;
 }
 
-#tempImg {
+.tempImg {
     grid-row: 1 / 3;
     justify-self: end;
     margin: 24px;
 }
 
-#tempDiv p {
+.tempDiv p {
     grid-column: 2 / 3;
 }
 
-#tempResult {
+.tempResult {
     align-self: flex-end;
     font-size: 46px;
     font-weight: bold;
 }
 
-#tempDesc {
+.tempDesc {
     font-weight: bold;
 }
 
 /* Details Section */
 
-#detailsTime {
+.detailsTime {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
-#detailsTime div {
+.detailsTime div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -249,7 +249,7 @@ section {
     color: var(--bg2-color);
 }
 
-#detailsTime > div p {
+.detailsTime > div p {
     margin-top: 4px;
     font-style: italic;
 }
@@ -352,4 +352,50 @@ section {
 
 form:has(.inputText:focus) .inputLabel, form:has(.inputText:not(:placeholder-shown)) .inputLabel {
     animation: focusInput 0.2s linear forwards;
+}
+
+
+/* sectionHis */
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#sectionHis {
+    display: none;
+}
+
+#sectionHis > h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+#sectionHis  h4 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+.content > div {
+    flex: 1 1 272px;
+}
+
+.content > div:first-child { /* if itemHistoric > 3 */
+    flex: 1 1 100%; 
+}
+.content > div > h3{
+    font-size: 22px;
+    justify-self: center;
+    margin: 12px;
+}
+
+.content > div > div > .tempResult{
+    font-size: 24px;
+}
+
+.content > div > div > .tempDesc{
+    font-size: 16px;
 }

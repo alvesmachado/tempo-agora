@@ -14,7 +14,7 @@ async function returnHome() {
 export const login = async () => {
     const inputText = document.querySelector('#iNome')
     if (inputText.value) {
-        const user = {'nome': inputText.value}
+        const user = {'nome': inputText.value, 'historic': ['','','','']}
         // Se não existir nenhuma conta registrada, cria o LocalStorage para registrar contas
         if (!localStorage.getItem('user')) {
             const userList = []
@@ -25,9 +25,9 @@ export const login = async () => {
             return returnHome()
         } else {
             const userList = JSON.parse(localStorage.getItem('user'))
-            if (userList.find( userItem => userItem.nome == user.nome)) {
+            if (userList.find( userItem => userItem.nome == inputText.value)) {
                 // Se a conta já estiver registrada ela loga
-                contaLogada = user.nome
+                contaLogada = userList.find( userItem => userItem.nome == inputText.value).nome
                 loginPag()
                 return returnHome()
             } else {

@@ -3,5 +3,6 @@ export const btnHeaderLocation = document.querySelector('#headerBottom span.mate
 export const btnSearch = document.querySelector('#sectionSearch input.material-icons')
 export const sectionSearch = document.querySelector('#sectionSearch')
 export const sectionTime = document.querySelector('#sectionTime')
+export const sectionHis = document.querySelector('#sectionHis')
 export const cityName = document.querySelector('#iCidadeInput')
 export const btnLogin = document.querySelector('#headerTop > div > a')
