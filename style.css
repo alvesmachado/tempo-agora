@@ -208,6 +208,7 @@ section {
     margin-bottom: 24px;
     justify-content: center;
     justify-self: center;
+    container-type: inline-size;
 }
 
 .tempImg {
@@ -221,8 +222,9 @@ section {
 }
 
 .tempResult {
+    white-space: nowrap;
     align-self: flex-end;
-    font-size: 46px;
+    font-size: clamp(2rem, 6cqw, 46px);
     font-weight: bold;
 }
 
